@@ -1,4 +1,4 @@
-##My HOMEWORK description
+## My HOMEWORK description
 * Create application.json and refactor application.properties
 * Refactor our PropertiesAppContext
 * Let's create new class on service with name 'JsonApplicationContext' with impl AppContext
@@ -10,7 +10,7 @@
 * RESULT :
 *     I realzie method JsonApplicationContext and refactor old PropertiesApplicationContext for new properties file.
 
-##Task with *
+## Task with *
 * For realize this tusk we need create package annotation and class-anno CustomBean.
 * Create InjectorApplicationContext on ou appContext package which implements app context.
 * Create a constructor, genBean methods and Map of our beans.
