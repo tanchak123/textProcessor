@@ -21,7 +21,7 @@ public class Application {
     public String getByKey(String key) {
         return textProcessor.getByKey(key);
     }
-
+  
     public static void main(String[] args) {
         Application application = new Application();
         application.save("1.txt", "ASD");
