@@ -6,12 +6,11 @@ import com.ithillel.service.textprocessor.TextProcessor;
 import java.io.IOException;
 
 public class Application {
-
-    private final ApplicationContext applicationContext;
+    
     private final TextProcessor textProcessor;
 
     public Application() {
-        applicationContext = new PropertiesApplicationContext();
+        ApplicationContext applicationContext = new PropertiesApplicationContext();
         textProcessor = (TextProcessor) applicationContext.getBean("textStorage");
     }
 
