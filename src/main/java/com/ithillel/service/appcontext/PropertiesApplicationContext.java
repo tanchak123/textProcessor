@@ -7,8 +7,6 @@ import java.util.Map;
 import java.util.Properties;
 
 public class PropertiesApplicationContext implements ApplicationContext {
-
-    private static final String TEXT_PROCESSOR = "textProcessor";
     private Map<String, Object> beans = new HashMap<>();
 
     public PropertiesApplicationContext() {
@@ -16,25 +14,21 @@ public class PropertiesApplicationContext implements ApplicationContext {
         try {
             applicationProperties.load(getClass().getClassLoader()
                     .getResourceAsStream("application.properties"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         for (int i = 0; i < 2; i++) {
             String name = applicationProperties.getProperty("beans[" + i + "].name");
             System.out.println(name);
             String type = applicationProperties.getProperty("beans[" + i + "].type");
-            try {
-                if (name.equals("textStorage")) {
+            if (name.equals("textStorage")) {
                     Object bean = getBean(applicationProperties.getProperty("beans[1].args"));
                     System.out.println(bean);
                     beans.put(name, Class.forName(type).getDeclaredConstructor(Storage.class)
                             .newInstance(bean));
                 } else {
                     beans.put(name, Class.forName(type).getDeclaredConstructor().newInstance());
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+                } 
+        } 
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
