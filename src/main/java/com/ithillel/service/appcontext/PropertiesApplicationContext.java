@@ -10,7 +10,7 @@ public class PropertiesApplicationContext implements ApplicationContext {
 
       private static Map<String, Object> beans = new HashMap<>();
 
-    public PropertiesApplicationContext() {
+      public PropertiesApplicationContext() {
         Properties applicationProperties = new Properties();
         try {
             applicationProperties.load(getClass().getClassLoader()
@@ -31,7 +31,7 @@ public class PropertiesApplicationContext implements ApplicationContext {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+      }
 
     @Override
     public Object getBean(String name) {
