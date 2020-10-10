@@ -11,7 +11,8 @@ import java.util.Objects;
 public class FileTextProcessor implements TextProcessor {
 
     private String path =
-            "C:\\Users\\Paul\\Desktop\\MyTextProcessor\\src\\main\\java\\com\\ithillel\\service";
+            String.format("src%smain%sjava%scom%sithillel%sservice",
+                    File.separator, File.separator, File.separator, File.separator, File.separator);
 
     public void save(String key, final String text) {
         Path resolve = Paths.get(path).resolve(key);
