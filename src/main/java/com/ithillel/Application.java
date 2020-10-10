@@ -7,10 +7,11 @@ import java.io.IOException;
 
 public class Application {
 
-    private ApplicationContext applicationContext = new PropertiesApplicationContext();
-    private TextProcessor textProcessor;
+    private final ApplicationContext applicationContext;
+    private final TextProcessor textProcessor;
 
     public Application() {
+        applicationContext = new PropertiesApplicationContext();
         textProcessor = (TextProcessor) applicationContext.getBean("textStorage");
     }
 
