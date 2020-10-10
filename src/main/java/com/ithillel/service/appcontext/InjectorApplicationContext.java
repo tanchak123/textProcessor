@@ -32,6 +32,7 @@ public class InjectorApplicationContext implements ApplicationContext {
         List<Class<?>> classes = new ArrayList<>();
         if (!directory.exists()) {
             System.out.println("Directory not exist");
+            return new ArrayList<>();
         }
         File[] files = directory.listFiles();
         for (File file : files) {
