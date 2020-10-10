@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Properties;
 
 public class PropertiesApplicationContext implements ApplicationContext {
-
-      private static Map<String, Object> beans = new HashMap<>();
+  
+    private static final Map<String, Object> beans = new HashMap<>();
 
       public PropertiesApplicationContext() {
         Properties applicationProperties = new Properties();
