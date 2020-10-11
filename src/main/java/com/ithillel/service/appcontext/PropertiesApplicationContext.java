@@ -11,11 +11,19 @@ public class PropertiesApplicationContext implements ApplicationContext {
     private static final Map<String, Object> beans = new HashMap<>();
 
       public PropertiesApplicationContext() {
-        Properties applicationProperties = new Properties();
+           Properties applicationProperties = new Properties();
         try {
             applicationProperties.load(getClass().getClassLoader()
                     .getResourceAsStream("application.properties"));
-        for (int i = 0; i < 2; i++) {
+        int beansCount = 0;
+        Enumeration<Object> enumeration = applicationProperties.keys();
+        while (enumeration.hasMoreElements()) {
+            String s = enumeration.nextElement().toString();
+            if (s.indexOf((beansCount + "").charAt(0)) > -1) {
+                beansCount++;
+            }
+        }
+        for (int i = 0; i < beansCount; i++) {
             String name = applicationProperties.getProperty("beans[" + i + "].name");
             System.out.println(name);
             String type = applicationProperties.getProperty("beans[" + i + "].type");
