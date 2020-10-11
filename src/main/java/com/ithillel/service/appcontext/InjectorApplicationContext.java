@@ -9,10 +9,11 @@ import java.util.Map;
 
 public class InjectorApplicationContext implements ApplicationContext {
 
-    private static Map<String, Object> beans = new HashMap<>();
+    private static final Map<String, Object> beans = new HashMap<>();
 
-    public InjectorApplicationContext() throws ClassNotFoundException {
-        List<Class<?>> classes = addClasses("src\\main\\java\\com\\ithillel");
+      public InjectorApplicationContext() throws ClassNotFoundException {
+        List<Class<?>> classes = addClasses(String.format("src%smain%sjava%scom%sithillel", File.separator,
+                File.separator, File.separator, File.separator));
         for (Class<?> c : classes) {
             if (c.isAnnotationPresent(CustomBean.class)) {
                 String name = c.getName();
@@ -32,6 +33,7 @@ public class InjectorApplicationContext implements ApplicationContext {
         List<Class<?>> classes = new ArrayList<>();
         if (!directory.exists()) {
             System.out.println("Directory not exist");
+            return new ArrayList<>();
         }
         File[] files = directory.listFiles();
         for (File file : files) {
@@ -39,9 +41,11 @@ public class InjectorApplicationContext implements ApplicationContext {
                 classes.addAll(addClasses(file.getPath()));
             } else if (file.getName().endsWith(".java")) {
                 classes.add(Class.forName(
-                        (path + "." + file.getName().substring(0, file.getName().length() - 5))
-                                .replace("src\\main\\java\\", "")
-                                .replaceAll("\\\\", ".")
+                        (path.replace(
+                                String.format("src%smain%sjava%s", File.separator, File.separator
+                                        , File.separator ), "") + File.separator
+                                + file.getName().substring(0, file.getName().length() - 5))
+                                .replaceAll(File.separator + File.separator, ".")
                 ));
             }
         }

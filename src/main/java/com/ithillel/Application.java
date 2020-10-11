@@ -6,11 +6,11 @@ import com.ithillel.service.textprocessor.TextProcessor;
 import java.io.IOException;
 
 public class Application {
-
-    private ApplicationContext applicationContext = new PropertiesApplicationContext();
-    private TextProcessor textProcessor;
+    
+    private final TextProcessor textProcessor;
 
     public Application() {
+        ApplicationContext applicationContext = new PropertiesApplicationContext();
         textProcessor = (TextProcessor) applicationContext.getBean("textStorage");
     }
 
@@ -21,8 +21,8 @@ public class Application {
     public String getByKey(String key) {
         return textProcessor.getByKey(key);
     }
-
-    public static void main(String[] args) throws IOException {
+  
+    public static void main(String[] args) {
         Application application = new Application();
         application.save("1.txt", "ASD");
         application.save("vasd", "123dsa");
