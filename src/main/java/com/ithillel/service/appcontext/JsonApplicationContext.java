@@ -90,16 +90,4 @@ public class JsonApplicationContext implements ApplicationContext {
             e.printStackTrace();
         }
     }
-
-        public static void main(String[] args) throws FileNotFoundException, InterruptedException {
-            JsonApplicationContext applicationContext = new JsonApplicationContext();
-            int count = 0;
-        while (true) {
-            System.out.println("STEP : " + count++);
-            System.out.println(applicationContext.getBean("storage"));
-            System.out.println(applicationContext.getBean("textProcessor"));
-            Thread.sleep(1000);
-        }
-    }
-
 }
