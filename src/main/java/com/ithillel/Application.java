@@ -28,12 +28,6 @@ public class Application {
         System.out.println(application.getByKey("1.txt"));
         System.out.println(application.getByKey("vasd"));
         int count = 0;
-        while (true) {
-            System.out.println("STEP : " + count++);
-            System.out.println(application.getApplicationContext().getBean("storage"));
-            System.out.println(application.getApplicationContext().getBean("textProcessor"));
-            Thread.sleep(1000);
-        }
     }
 
     public ApplicationContext getApplicationContext() {

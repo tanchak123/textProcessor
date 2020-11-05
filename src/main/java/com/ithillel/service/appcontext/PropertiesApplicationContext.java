@@ -1,11 +1,10 @@
 package com.ithillel.service.appcontext;
 
 import com.ithillel.service.storage.Storage;
+
+import java.io.File;
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 public class PropertiesApplicationContext implements ApplicationContext {
   
@@ -46,8 +45,12 @@ public class PropertiesApplicationContext implements ApplicationContext {
     public Object getBean(String name) {
         return beans.get(name);
     }
-
+    private static final String FILE_NAME = "src\\main\\resources\\application.json";
     public static void main(String[] args) {
+        File file = new File(FILE_NAME);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(file.lastModified());
+        System.out.println(calendar.getTime());
         PropertiesApplicationContext p = new PropertiesApplicationContext();
 
     }
