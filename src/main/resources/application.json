@@ -1,11 +1,11 @@
 {
   "beans":[{
     "name": "storage",
-    "type": "com.ithillel.service.HashMapStorage"
+    "type": "com.ithillel.service.storage.HashMapStorage"
   },
     {
       "name": "textProcessor",
-      "type": "com.ithillel.service.InMemoryTextProcessor",
+      "type": "com.ithillel.service.textprocessor.FileTextProcessor",
       "constructorArgs": ["storage"]
     }]
 }
